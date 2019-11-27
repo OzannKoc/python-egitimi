@@ -1,0 +1,62 @@
+{% extends 'admin/layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% for item in data %}
+<div class="card text-center">
+    <div class="card-header">
+        {{item[1]}}
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{item[2]}}</p>
+    </div>
+    <div class="card-footer text-muted">
+        {{item[3]}}
+    </div>
+</div>
+<br>
+
+
+<h4>Bir Yorum Ekleyin..</h4>
+
+<br>
+<form action="/anasayfa/yorum/save" method="post">
+
+    <input type="hidden" name="BlogId" value="{{item[0]}}">
+    {% endfor %}
+    <div class="form-group">
+        <input type="text" class="form-control" name="Ekleyen" placeholder="Adınız..">
+    </div>
+    <div class="form-group">
+
+        <textarea class="form-control" name="Yorum" rows="5" placeholder="Bir yorumu yazınız.."></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Yorum Ekle</button>
+</form>
+
+<br>
+{% if iki != None %}
+<div>
+    <h2>Yorumlar</h2>
+
+    {% for item1 in iki %}
+    <div class="card text-center">
+        <label>Yorum Sahibi:</label>
+        <div class="card-header">
+            {{item1[3]}}
+        </div>
+        <label>Yorumu:</label>
+        <div class="card-header">
+            <p class="card-text">{{item1[2]}}</p>
+        </div>
+    </div>
+    <br>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

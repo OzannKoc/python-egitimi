@@ -1,0 +1,33 @@
+{% extends 'admin/layout.html' %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+
+
+    {% for item in data %}
+    <div class="col-sm-6">
+        <div class="card text-center">
+            <div class="card-header">
+                {{item[1]}}
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{item[2]}}</p>
+            </div>
+            <div class="card-footer text-muted">
+                {{item[3]}}
+            </div>
+            <a href="/anasayfa/{{item[0]}}" class="btn btn-primary">Detay Görüntüle</a>
+        </div>
+        <br>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}

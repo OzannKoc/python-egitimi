@@ -1,0 +1,33 @@
+{% extends 'admin/layout.html' %}
+
+{% block body %}
+
+<div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <form action="/admin/blog/save" method="post">
+      {% if data != None %}
+      <input type="hidden" name="Id" value="{{data[0]}}" />
+      {% endif %}
+
+      <div class="form-group">
+        <label>Başlık</label>
+            <input type="text" class="form-control" name="Baslik" {% if data != None %} value="{{data[1]}}" {%endif%} >
+          </div>
+      <div class="form-group">
+        <label>İçerik</label>
+        <input type="text" class="form-control" name="Icerik" {% if data != None %} value="{{data[2]}}" {%endif%} >
+      </div>
+      <div class="form-group">
+        <label>Yayin Tarihi</label>
+        <input type="date" class="form-control" name="YayinTarihi" {% if data != None %} value="{{data[3]}}" {%endif%} >
+        </div>
+      <button type="submit" class="btn btn-primary">Kaydet</button>
+    </form>
+</div>
+
+{% endblock %}
